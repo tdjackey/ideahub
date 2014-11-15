@@ -130,3 +130,4 @@ var getClientAddress = function (req) {
 exports.getIp = getClientAddress;
 exports.newIdea = newIdea;
 exports.listIdea = listIdea;
+exports.listHackathonIdea = listHackathonIdea;
