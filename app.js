@@ -11,9 +11,10 @@ var routes = require('./routes/index');
 //var users = require('./routes/users');
 
 var Idea = require("./api/idea");
+var Ideaboard = require("./api/ideaboard");
 var User = require("./api/user");
 
-mongoose.connect("mongodb://localhost/ThacksIdea");
+mongoose.connect("mongodb://localhost/IdeaHub");
 
 var app = module.exports = express();
 
@@ -50,6 +51,9 @@ app.post('/idea',Idea.newIdea);
 app.get('/getIp',Idea.getIp);
 app.get('/idea',Idea.listIdea);
 
+//Ideaboard 操作
+app.post('/ideaboard',Ideaboard.newIdeaboard);
+app.get('/ideaboard',Ideaboard.listIdeaboard);
 
 app.get('/users', function(req, res, next) {
     //return next(error(401, 'user list is empty'));
