@@ -177,7 +177,7 @@ app.controller('HomeControllerBoard', [
                     return;
                 }else{
                     $scope.ideaboards = d;//d.map(function(element) { return element.getAttribute('name'); });
-                    console.log(d);
+                    console.log(d[0]);
 
                 }
 
