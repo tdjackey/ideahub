@@ -1,10 +1,10 @@
-var Idea, mongoose, newIdea;
+var Ideaboard, mongoose, newIdeaboard;
 var moment = require('moment');
 
 mongoose = require("mongoose");
 
 
-var Idea = mongoose.model("Idea",{
+var Ideaboard = mongoose.model("Ideaboard",{
   
   time:{ type: Date, default: Date.now }, 
 
