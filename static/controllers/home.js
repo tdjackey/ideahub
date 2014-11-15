@@ -16,6 +16,16 @@ app.factory('myModal', function (btfModal) {
   });
 });
 
+QuoteBase.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+    $routeProvider
+        .when('/:boardname',{
+            controller: 'HomeController',
+            templateUrl: 'views/public.html'
+        })
+        .otherwise({redirectTo: '/'});
+    $locationProvider.html5Mode(true);
+}]);
+
 // typically you'll inject the modal service into its own
 // controller so that the modal can close itself
 app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal) {
