@@ -26,7 +26,7 @@ app.factory('myModalBoard', function (btfModal) {
 
 app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
     $routeProvider
-        .when('/b/:anything',{
+        .when('/b/',{
             controller: 'HomeController',
             templateUrl: 'ideaboard.html'
         })
