@@ -33,8 +33,8 @@ app.factory('IdeasFactory',function($http,$filter,$q){
     factory.setScope = function(scope){
       ideaScope = scope;
     };
-    factory.getAllIdeas = function(){
-        var promise = $http.get("/api/")
+    factory.getAllIdeas = function(hackathon){
+        var promise = $http.get("/api/"+hackathon)
             .then(function(response){
                 console.log(response);
                 return response.data;
@@ -92,15 +92,16 @@ app.config(['$routeProvider',function($routeProvider){
 
 // typically you'll inject the modal service into its own
 // controller so that the modal can close itself
-app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal) {
+app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal,$location) {
   $scope.addIdea = function(){
     IdeasFactory.postIdea({
         title: $scope.title,
         description: $scope.description,
         user_id: $scope.user_id,
-        email: $scope.email
+        email: $scope.email,
+        ideaboardName: $location.url().split('\/')[2]
     }).success(function(d){
-      IdeasFactory.getScope().FetchAllIdeas();
+      IdeasFactory.getScope().FetchAllIdeas($location.url().split('\/')[2]);
       $scope.closeMe();
     }).error(function(d){
       $scope.error = d.fail;
@@ -137,9 +138,9 @@ app.controller('MyModalBoardCtrl', function ($scope,IdeaBoardFactory,myModalBoar
 
 app.controller('HomeController', [
 
-    '$scope','$http','IdeasFactory','myModal',
+    '$scope','$http','IdeasFactory','myModal', '$location',
 
-    function initialize ($scope,$http,IdeasFactory,myModal) {
+    function initialize ($scope,$http,IdeasFactory,myModal,$location) {
 
         'use strict';
 
@@ -149,7 +150,8 @@ app.controller('HomeController', [
         // IdeaBoardFactory.setScope($scope);
 
         $scope.FetchAllIdeas = function(){
-            IdeasFactory.getAllIdeas().then(function(d){
+            console.log($location.url().split('\/')[2]);
+            IdeasFactory.getAllIdeas($location.url().split('\/')[2]).then(function(d){
 
                 if(!d){
                     return;
