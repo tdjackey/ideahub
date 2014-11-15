@@ -99,9 +99,8 @@ app.factory('IdeaBoardFactory',function($http,$filter,$q){
       ideaBoardScope = scope;
     };
     factory.getAllIdeaBoards = function(){
-        var promise = $http.get("/")
+        var promise = $http.get("/ideaboard")
             .then(function(response){
-                console.log(response);
                 return response.data;
             });
 
@@ -177,7 +176,9 @@ app.controller('HomeControllerBoard', [
                 if(!d){
                     return;
                 }else{
-                    $scope.ideaboards = d;
+                    $scope.ideaboards = d;//d.map(function(element) { return element.getAttribute('name'); });
+                    console.log(d);
+
                 }
 
             });
