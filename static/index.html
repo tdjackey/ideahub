@@ -88,7 +88,15 @@
 
         <div ng-controller="HomeControllerBoard">
 
+        	<script src="./bower_components/angular/angular.min.js"></script>
+			<script src="./bower_components/angular-deckgrid/angular-deckgrid.js"></script>
+			<script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+			<script src="./bower_components/angular-modal/modal.min.js"></script>
+			<script src="./bower_components/angular-route/angular-route.js"></script>
+			<script src="./controllers/home.js"></script>
+
             <div>
+<<<<<<< HEAD
                 <br>
                 <div class='center'>
                 	<TABLE>Hackathon IdeaHub</TABLE>
@@ -118,14 +126,11 @@
 
 									</div>
                 </form-->
+=======
+            	<div ng-view></div>
+
+>>>>>>> f04b7273a23c8c5bc7353da796825bdc3fce006d
             </div>
-        <script src="./bower_components/angular/angular.min.js"></script>
-		<script src="./bower_components/angular-deckgrid/angular-deckgrid.js"></script>
-		<script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-		<script src="./bower_components/angular-modal/modal.min.js"></script>
-		<script src="./bower_components/angular-route/angular-route.js"></script>
-		<script src="./controllers/home.js"></script>
-			<div ng-view></div>
             <div deckgrid class="deckgrid" source="ideaboards">
 							<div class="card-container">
                 <div class="ideacard">

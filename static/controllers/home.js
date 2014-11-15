@@ -77,15 +77,17 @@ app.factory('IdeaBoardFactory',function($http,$filter,$q){
 });
 
 app.config(['$routeProvider',function($routeProvider){
-    console.log("enter");
-    $routeProvider.
-        when('/b/:param',{
-            templateUrl: '/b/index.html',
+    $routeProvider
+        .when('/b/:param',{
+            templateUrl: '/views/board.html',
+            controller: 'HomeControllerBoard'
+        })
+        .when('/',{
+            templateUrl: '/views/boardhub.html',
             controller: 'HomeController'
-        }).
-        otherwise({redirectTo: '/'});
+        })
+        .otherwise({redirectTo: '/'});
     // $locationProvider.html5Mode( true);
-    console.log("leave");
 }]);
 
 // typically you'll inject the modal service into its own
