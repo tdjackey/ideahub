@@ -60,7 +60,7 @@ var newIdea = function(req, res, next){
       var timeNow = moment();
       var timeDiff = timeNow.diff(timeLastIdea,'minutes');   
       console.log(timeDiff);
-      if(timeDiff > 1){
+      if(timeDiff > -1){
         newIdea.save(function(err){
           if (err){
             console.log(err);
