@@ -11,7 +11,7 @@ var Ideaboard = mongoose.model("Ideaboard",{
   ideaboardName: String,
   description: String,
 
-  ip: String,
+  ip: String
  
 
 });
@@ -27,12 +27,12 @@ var newIdeaboard = function(req, res, next){
   var newIdeaboard = new Ideaboard({
     ideaboardName: req.param('ideaboardName'),
     description: req.param('description'),
-        ip: (req.headers['x-forwarded-for'] || '').split(',')[0] || req._remoteAddress 
+    ip: (req.headers['x-forwarded-for'] || '').split(',')[0] || req._remoteAddress 
     //ip_2: req.headers['x-real-ip']
   });
   //console.log(req);
   //console.log(newIdea.ip);
-  /*
+  
   Ideaboard.find({ip: newIdeaboard.ip})
   .sort('-time')
   .exec(function(err, ideas){
@@ -43,17 +43,17 @@ var newIdeaboard = function(req, res, next){
       var timeNow = moment();
       var timeDiff = timeNow.diff(timeLastIdea,'minutes');   
       console.log(timeDiff);
-      if(timeDiff > 1){
-        newIdea.save(function(err){
+      if(timeDiff > -1){
+        newIdeaboard.save(function(err){
           if (err){
             console.log(err);
             res.json(500,err);
           }else{
-            res.json(200,{success:newIdea.description});
+            res.json(200,{success:newIdeaboard.description});
           }
         });
       }else{
-        console.log("You publish idea too quickly");
+        console.log("You publish ideaboard too quickly");
         res.json(401,{fail:"You publish idea too quickly"});
       }  //console.log(ideas);
     }else{
@@ -62,11 +62,11 @@ var newIdeaboard = function(req, res, next){
             console.log(err);
             res.json(500,err);
           }else{
-            res.json(200,{success:newIdea.description});
+            res.json(200,{success:newIdeaboard.description});
           }
       });
     }
-  });*/
+  });
 
   //console.log(req._startTime);
   //Idea.find
