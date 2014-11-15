@@ -55,7 +55,7 @@ app.get('/idea',Idea.listIdea);
 app.post('/ideaboard',Ideaboard.newIdeaboard);
 app.get('/ideaboard',Ideaboard.listIdeaboard);
 app.get('/api/:ideaboard',Idea.listHackathonIdea);
-
+app.get('/api/',Idea.listIdea);
 app.get('/users', function(req, res, next) {
     //return next(error(401, 'user list is empty'));
     return res.send("test_user");
