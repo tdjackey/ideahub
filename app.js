@@ -96,8 +96,8 @@ app.use(function(err, req, res, next) {
 });
 
 if (!module.parent) {
-  app.listen(3001);
-  console.log("Express started at 3001");
+  app.listen(3009);
+  console.log("Express started at 3009");
 }
 
 module.exports = app;
