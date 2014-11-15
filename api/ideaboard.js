@@ -32,7 +32,8 @@ var newIdeaboard = function(req, res, next){
   });
   //console.log(req);
   //console.log(newIdea.ip);
-  Ideaboard.find({ip: newIdea.ip})
+  /*
+  Ideaboard.find({ip: newIdeaboard.ip})
   .sort('-time')
   .exec(function(err, ideas){
     if(err){
@@ -65,7 +66,7 @@ var newIdeaboard = function(req, res, next){
           }
       });
     }
-  });
+  });*/
 
   //console.log(req._startTime);
   //Idea.find
