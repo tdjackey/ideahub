@@ -25,7 +25,7 @@ npm install
 
 ###newIdea test
 ```
-curl -X POST -H 'content-type:application/json' -d '{"user_id":"test_author","title":"test_idea","description":"this is an test_idea"}' http://localhost:3001/idea
+curl -X POST -H 'content-type:application/json' -d '{"user_id":"test_author","title":"test_idea","ideaboardName":"hackshanghai","description":"this is an test_idea"}' http://localhost:3009/idea
 ```
 ###newUser test
 ```
