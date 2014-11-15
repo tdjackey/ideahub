@@ -128,8 +128,7 @@
             <div deckgrid class="deckgrid" source="ideaboards">
 							<div class="card-container">
                 <div class="ideacard">
-                    <div class="title">{{card.ideaboardName}}</div>
-
+                    <div class="title"><a href="/b/{{card.ideaboardName}}">{{card.ideaboardName}}</a></div>
 
                     <!--div class="desc" ng-bind-html='card.title | linky : "_blank" '></div-->
                     <div class="desc" ng-bind-html='card.description | linky : "_blank" '></div>

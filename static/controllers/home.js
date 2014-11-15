@@ -6,7 +6,7 @@
  *
  */
 
-var app = angular.module('IdeaBoard',['akoenig.deckgrid','btford.modal','ngSanitize']);
+var app = angular.module('IdeaBoard',['akoenig.deckgrid','btford.modal','ngSanitize','ngRoute']);
 
 app.factory('myModal', function (btfModal) {
   return btfModal({
@@ -24,15 +24,15 @@ app.factory('myModalBoard', function (btfModal) {
   });
 });
 
-// app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
-//     $routeProvider
-//         .when('/b/:boardname',{
-//             controller: 'HomeController',
-//             templateUrl: 'ideaboard.html'
-//         })
-//         .otherwise({redirectTo: '/'});
-//     $locationProvider.html5Mode(true);
-// }]);
+app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+    $routeProvider
+        .when('/b/:anything',{
+            controller: 'HomeController',
+            templateUrl: 'ideaboard.html'
+        })
+        .otherwise({redirectTo: '/'});
+    // $locationProvider.html5Mode(true);
+}]);
 
 // typically you'll inject the modal service into its own
 // controller so that the modal can close itself
@@ -88,8 +88,8 @@ app.factory('IdeasFactory',function($http,$filter,$q){
     factory.setScope = function(scope){
       ideaScope = scope;
     };
-    factory.getAllIdeas = function(){
-        var promise = $http.get("/idea")
+    factory.getAllIdeas = function(hackathon){
+        var promise = $http.get("/api/"+hackathon)
             .then(function(response){
                 console.log(response);
                 return response.data;
@@ -203,7 +203,6 @@ app.controller('HomeControllerBoard', [
 
         $scope.FetchAllIdeaBoards();
         $scope.toggle = myModalBoard.activate;
-
     }
 
 ]);
