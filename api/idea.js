@@ -92,7 +92,7 @@ var newIdea = function(req, res, next){
 };
 
 var listIdea = function(req, res, next){
-    Idea.find({ ideaboardName: req.param('ideaboardName') })
+    Idea.find({ })
       .sort('-time')
       .exec(function(err, ideas){
         //console.log(ideas);
@@ -106,7 +106,7 @@ var listIdea = function(req, res, next){
 };
 
 var listHackathonIdea = function (req, res, next){
-      Idea.find({ })
+      Idea.find({ ideaboardName: req.param('ideaboardName') })
       .sort('-time')
       .exec(function(err, ideas){
         //console.log(ideas);
