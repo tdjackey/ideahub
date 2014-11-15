@@ -86,7 +86,7 @@
 
     <body data-ng-app="IdeaBoard" class="ng-scope">
 
-        <div ng-controller="HomeController">
+        <div ng-controller="HomeControllerBoard">
 
             <div>
                 <br>
@@ -127,10 +127,10 @@
             <div deckgrid class="deckgrid" source="ideas">
 							<div class="card-container">
                 <div class="ideacard">
-                    <div class="title">{{card.title}}</div>
+                    <div class="title">{{card.ideaboardName}}</div>
 
                     <!--div class="desc" ng-bind-html='card.title | linky : "_blank" '></div-->
-                    <div class="desc" ng-bind-html='card.description | linky : "_blank" '></div>
+                    <!-- <div class="desc" ng-bind-html='card.description | linky : "_blank" '></div> -->
                     <!--div class="author">{{card.user_id}}</div>
                     <div class="email"><a href="mailto:{{card.email}}">{{card.email}}</a></div-->
 

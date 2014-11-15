@@ -16,15 +16,15 @@ app.factory('myModal', function (btfModal) {
   });
 });
 
-app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
-    $routeProvider
-        .when('/b/:boardname',{
-            controller: 'HomeController',
-            templateUrl: 'ideaboard.html'
-        })
-        .otherwise({redirectTo: '/'});
-    $locationProvider.html5Mode(true);
-}]);
+// app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+//     $routeProvider
+//         .when('/b/:boardname',{
+//             controller: 'HomeController',
+//             templateUrl: 'ideaboard.html'
+//         })
+//         .otherwise({redirectTo: '/'});
+//     $locationProvider.html5Mode(true);
+// }]);
 
 // typically you'll inject the modal service into its own
 // controller so that the modal can close itself
@@ -47,7 +47,7 @@ app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal) {
   $scope.addIdeaBoard = function(){
     IdeaBoardFactory.postIdeaBoard({
         ideaboardName: $scope.ideaboardName,
-        description: $scope.ideaboardDescription
+        ideaboardDescription: $scope.ideaboardDescription
     }).success(function(d){
         IdeaBoardFactory.getScope().FetchAllIdeaBoards();
         $scope.closeMe();
@@ -91,6 +91,7 @@ app.factory('IdeasFactory',function($http,$filter,$q){
 app.factory('IdeaBoardFactory',function($http,$filter,$q){
     var factory = {};
     var ideaBoardScope = {};
+
     factory.getScope = function(){
       return ideaBoardScope;
     };
@@ -123,9 +124,10 @@ app.controller('HomeController', [
         'use strict';
 
         $scope.ideas = [];
-        $scope.ideaboards = [];
+        // $scope.ideaboards = [];
         IdeasFactory.setScope($scope);
-        IdeaBoardFactory.setScope($scope);
+        // IdeaBoardFactory.setScope($scope);
+
         $scope.FetchAllIdeas = function(){
             IdeasFactory.getAllIdeas().then(function(d){
 
@@ -138,7 +140,38 @@ app.controller('HomeController', [
             });
         };
 
+        // $scope.FetchAllIdeaBoards = function(){
+        //     IdeaBoardFactory.getAllIdeaBoards().then(function(d){
+
+        //         if(!d){
+        //             return;
+        //         }else{
+        //             $scope.ideaboards = d;
+        //         }
+
+        //     });
+        // };
+
+        $scope.FetchAllIdeas();
+        $scope.toggle = myModal.activate;
+
+    }
+
+]);
+
+app.controller('HomeControllerBoard', [
+
+    '$scope','$http','IdeaBoardFactory','myModal',
+
+    function initialize ($scope,$http,IdeaBoardFactory,myModal) {
+
+        'use strict';
+
+        $scope.ideaboards = [];
+        IdeaBoardFactory.setScope($scope);
+    
         $scope.FetchAllIdeaBoards = function(){
+
             IdeaBoardFactory.getAllIdeaBoards().then(function(d){
 
                 if(!d){
@@ -150,8 +183,8 @@ app.controller('HomeController', [
             });
         };
 
-        $scope.FetchAllIdeas();
-        $scope.toggle = myModal.activate;
+        $scope.FetchAllIdeaBoards();
+        // $scope.toggle = myModal.activate;
 
     }
 
