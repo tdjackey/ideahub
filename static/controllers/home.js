@@ -24,6 +24,61 @@ app.factory('myModalBoard', function (btfModal) {
   });
 });
 
+app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+    $routeProvider
+        .when('/b/',{
+            controller: 'HomeController',
+            templateUrl: 'ideaboard.html'
+        })
+        .otherwise({redirectTo: '/'});
+    // $locationProvider.html5Mode(true);
+}]);
+
+// typically you'll inject the modal service into its own
+// controller so that the modal can close itself
+app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal) {
+  $scope.addIdea = function(){
+    IdeasFactory.postIdea({
+        title: $scope.title,
+        description: $scope.description,
+        user_id: $scope.user_id,
+        email: $scope.email
+    }).success(function(d){
+      IdeasFactory.getScope().FetchAllIdeas();
+      $scope.closeMe();
+    }).error(function(d){
+      $scope.error = d.fail;
+    });
+
+  };
+
+  $scope.closeMe = myModal.deactivate;
+
+  $scope.error = false;
+
+});
+
+app.controller('MyModalBoardCtrl', function ($scope,IdeaBoardFactory,myModalBoard) {
+  $scope.addIdeaBoard = function(){
+    IdeaBoardFactory.postIdeaBoard({
+        ideaboardName: $scope.ideaboardName,
+        description: $scope.description,
+        website: $scope.website
+    }).success(function(d){
+      IdeaBoardFactory.getScope().FetchAllIdeaBoards();
+      $scope.closeMe();
+    }).error(function(d){
+      $scope.error = d.fail;
+    });
+
+  };
+
+  $scope.closeMe = myModalBoard.deactivate;
+
+  $scope.error = false;
+
+});
+
 app.factory('IdeasFactory',function($http,$filter,$q){
     var factory = {};
     var ideaScope = {};
