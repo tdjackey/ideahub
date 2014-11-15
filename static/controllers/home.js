@@ -16,9 +16,9 @@ app.factory('myModal', function (btfModal) {
   });
 });
 
-QuoteBase.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
     $routeProvider
-        .when('/:boardname',{
+        .when('/b/:boardname',{
             controller: 'HomeController',
             templateUrl: 'ideaboard.html'
         })
