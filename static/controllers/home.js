@@ -173,6 +173,7 @@ app.controller('HomeController', [
         // };
 
         $scope.FetchAllIdeas();
+        $scope.boardName = $location.url().split('\/')[1];
         $scope.toggle = myModal.activate;
 
     }
