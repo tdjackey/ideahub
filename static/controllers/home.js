@@ -24,16 +24,6 @@ app.factory('myModalBoard', function (btfModal) {
   });
 });
 
-app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
-    $routeProvider
-        .when('/b/:anything',{
-            controller: 'HomeController',
-            templateUrl: 'ideaboard.html'
-        })
-        .otherwise({redirectTo: '/'});
-    // $locationProvider.html5Mode(true);
-}]);
-
 // typically you'll inject the modal service into its own
 // controller so that the modal can close itself
 app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal) {
@@ -130,6 +120,16 @@ app.factory('IdeaBoardFactory',function($http,$filter,$q){
     };
     return factory;
 });
+
+app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+    $routeProvider
+        .when('/b/:anything',{
+            templateUrl: 'ideaboard.html',
+            controller: 'HomeController'
+        })
+        .otherwise({redirectTo: '/c/'});
+    // $locationProvider.html5Mode( true);
+}]);
 
 app.controller('HomeController', [
 
