@@ -54,7 +54,7 @@ app.get('/idea',Idea.listIdea);
 //Ideaboard 操作
 app.post('/ideaboard',Ideaboard.newIdeaboard);
 app.get('/ideaboard',Ideaboard.listIdeaboard);
-//app.get('/b/:ideaboard',Ideaboard.listIdeaboard);
+app.get('/b/:ideaboard',Idea.listHackathonIdea);
 
 app.get('/users', function(req, res, next) {
     //return next(error(401, 'user list is empty'));
