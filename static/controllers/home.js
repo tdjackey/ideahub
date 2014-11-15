@@ -12,7 +12,15 @@ app.factory('myModal', function (btfModal) {
   return btfModal({
     controller: 'MyModalCtrl',
     controllerAs: 'modal',
-    templateUrl: 'modal.html'
+    templateUrl: 'ideamodal.html'
+  });
+});
+
+app.factory('myModalBoard', function (btfModal) {
+  return btfModal({
+    controller: 'MyModalBoardCtrl',
+    controllerAs: 'modal',
+    templateUrl: 'ideaboardmodal.html'
   });
 });
 
@@ -44,19 +52,28 @@ app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal) {
 
   };
 
+  $scope.closeMe = myModal.deactivate;
+
+  $scope.error = false;
+
+});
+
+app.controller('MyModalBoardCtrl', function ($scope,IdeaBoardFactory,myModalBoard) {
   $scope.addIdeaBoard = function(){
     IdeaBoardFactory.postIdeaBoard({
         ideaboardName: $scope.ideaboardName,
-        ideaboardDescription: $scope.ideaboardDescription
+        description: $scope.description,
+        website: $scope.website
     }).success(function(d){
-        IdeaBoardFactory.getScope().FetchAllIdeaBoards();
-        $scope.closeMe();
+      IdeaBoardFactory.getScope().FetchAllIdeaBoards();
+      $scope.closeMe();
     }).error(function(d){
-        $scope.error = d.fail;
+      $scope.error = d.fail;
     });
+
   };
 
-  $scope.closeMe = myModal.deactivate;
+  $scope.closeMe = myModalBoard.deactivate;
 
   $scope.error = false;
 
@@ -108,7 +125,7 @@ app.factory('IdeaBoardFactory',function($http,$filter,$q){
     };
 
     factory.postIdeaBoard = function(data){
-        var promise = $http.post('/', data);
+        var promise = $http.post('/ideaboard', data);
         return promise;
     };
     return factory;
@@ -160,9 +177,9 @@ app.controller('HomeController', [
 
 app.controller('HomeControllerBoard', [
 
-    '$scope','$http','IdeaBoardFactory','myModal',
+    '$scope','$http','IdeaBoardFactory','myModalBoard',
 
-    function initialize ($scope,$http,IdeaBoardFactory,myModal) {
+    function initialize ($scope,$http,IdeaBoardFactory,myModalBoard) {
 
         'use strict';
 
@@ -185,7 +202,7 @@ app.controller('HomeControllerBoard', [
         };
 
         $scope.FetchAllIdeaBoards();
-        // $scope.toggle = myModal.activate;
+        $scope.toggle = myModalBoard.activate;
 
     }
 
