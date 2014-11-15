@@ -12,6 +12,8 @@ var Idea = mongoose.model("Idea",{
   
   description: String,
 
+  ideaboardName: String,
+
   title: String,
   email: String,
   //tags: [String],
@@ -41,6 +43,7 @@ var newIdea = function(req, res, next){
     email: req.param("email"),
     title: req.param('title'),
 		description: req.param('description'),
+    ideaboardName: req.param('ideaboardName').
 		tags: req.param('tags'),
     ip: (req.headers['x-forwarded-for'] || '').split(',')[0] || req._remoteAddress 
     //ip_2: req.headers['x-real-ip']
