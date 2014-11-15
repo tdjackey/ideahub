@@ -36,7 +36,6 @@ app.factory('IdeasFactory',function($http,$filter,$q){
     factory.getAllIdeas = function(hackathon){
         var promise = $http.get("/api/"+hackathon)
             .then(function(response){
-                console.log(response);
                 return response.data;
             });
 
@@ -78,7 +77,7 @@ app.factory('IdeaBoardFactory',function($http,$filter,$q){
 
 app.config(['$routeProvider',function($routeProvider){
     $routeProvider
-        .when('/b/:param',{
+        .when('/:param',{
             templateUrl: '/views/board.html',
             controller: 'HomeControllerBoard'
         })
@@ -99,9 +98,9 @@ app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal,$location) {
         description: $scope.description,
         user_id: $scope.user_id,
         email: $scope.email,
-        ideaboardName: $location.url().split('\/')[2]
+        ideaboardName: $location.url().split('\/')[1]
     }).success(function(d){
-      IdeasFactory.getScope().FetchAllIdeas($location.url().split('\/')[2]);
+      IdeasFactory.getScope().FetchAllIdeas($location.url().split('\/')[1]);
       $scope.closeMe();
     }).error(function(d){
       $scope.error = d.fail;
@@ -150,8 +149,7 @@ app.controller('HomeController', [
         // IdeaBoardFactory.setScope($scope);
 
         $scope.FetchAllIdeas = function(){
-            console.log($location.url().split('\/')[2]);
-            IdeasFactory.getAllIdeas($location.url().split('\/')[2]).then(function(d){
+            IdeasFactory.getAllIdeas($location.url().split('\/')[1]).then(function(d){
 
                 if(!d){
                     return;
@@ -200,7 +198,6 @@ app.controller('HomeControllerBoard', [
                     return;
                 }else{
                     $scope.ideaboards = d;//d.map(function(element) { return element.getAttribute('name'); });
-                    console.log(d[0]);
 
                 }
 
