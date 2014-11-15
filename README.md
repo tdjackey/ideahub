@@ -35,15 +35,19 @@ curl -X POST -H 'content-type:application/json' -d '{"user_id":"test_author","ti
 ```
 ###newUser test
 ```
-curl -X POST -H 'content-type:application/json' -d '{"user_id":"test"}' http://localhost:3001/user
+curl -X POST -H 'content-type:application/json' -d '{"user_id":"test"}' http://localhost:3009/user
+```
+###listSpecific Hackathon idea test
+```
+curl -X GET 'http://localhost:3009/b/hackshanghai'
 ```
 
 ###listUser test
 ```
-curl -X GET 'http://localhost:3001/user'
+curl -X GET 'http://localhost:3009/user'
 ```
 ###listIdea test
 ```
-curl -X GET 'http://localhost:3001/idea'
+curl -X GET 'http://localhost:3009/idea'
 ```
 
