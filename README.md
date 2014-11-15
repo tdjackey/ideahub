@@ -20,6 +20,7 @@ npm install
 #Test
 ##Website for test
 ```
+http://ideahub.thu.io/
 ```
 ##api test
 
