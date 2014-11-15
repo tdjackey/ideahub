@@ -106,7 +106,8 @@ var listIdea = function(req, res, next){
 };
 
 var listHackathonIdea = function (req, res, next){
-      Idea.find({ ideaboardName: req.param('ideaboardName') })
+    //console.log(req.param('ideaboardName'));
+      Idea.find({ ideaboardName: req.param('ideaboard') })
       .sort('-time')
       .exec(function(err, ideas){
         //console.log(ideas);
