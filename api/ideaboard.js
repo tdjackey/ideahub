@@ -10,7 +10,7 @@ var Ideaboard = mongoose.model("Ideaboard",{
 
   ideaboardName: String,
   description: String,
-
+  website: String, 
   ip: String
  
 
@@ -27,6 +27,7 @@ var newIdeaboard = function(req, res, next){
   var newIdeaboard = new Ideaboard({
     ideaboardName: req.param('ideaboardName'),
     description: req.param('description'),
+    website: req.param('website'),
     ip: (req.headers['x-forwarded-for'] || '').split(',')[0] || req._remoteAddress 
     //ip_2: req.headers['x-real-ip']
   });
