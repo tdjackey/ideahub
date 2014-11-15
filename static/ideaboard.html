@@ -86,7 +86,7 @@
 
     <body data-ng-app="IdeaBoard" class="ng-scope">
 
-        <div ng-controller="HomeController">
+        <div>
 
             <div>
                 <br>
@@ -97,19 +97,6 @@
 		<script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 		<script src="./bower_components/angular-modal/modal.min.js"></script>
 		<script src="./controllers/home.js"></script>
-		
-            <div deckgrid class="deckgrid" source="ideas">
-							<div class="card-container">
-                <div class="ideacard">
-                    <div class="title">{{card.title}}</div>
-                    <div class="desc" ng-bind-html='card.description | linky : "_blank" '></div>
-                    <div class="author">{{card.user_id}}</div>
-                    <div class="email"><a href="mailto:{{card.email}}">{{card.email}}</a></div>
-
-                </div>
-							</div>
-            </div>
-        </div>
 
 
         
