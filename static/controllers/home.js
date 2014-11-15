@@ -76,11 +76,11 @@ app.factory('IdeaBoardFactory',function($http,$filter,$q){
     return factory;
 });
 
-app.config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+app.config(['$routeProvider',function($routeProvider){
     console.log("enter");
     $routeProvider.
-        when('/b/',{
-            templateUrl: '../ideaboard.html',
+        when('/b/:param',{
+            templateUrl: '/b/index.html',
             controller: 'HomeController'
         }).
         otherwise({redirectTo: '/'});

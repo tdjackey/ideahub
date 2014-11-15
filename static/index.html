@@ -124,19 +124,19 @@
 		<script src="./bower_components/angular-modal/modal.min.js"></script>
 		<script src="./bower_components/angular-route/angular-route.js"></script>
 		<script src="./controllers/home.js"></script>
-		
+			<div ng-view></div>
             <div deckgrid class="deckgrid" source="ideaboards">
 							<div class="card-container">
                 <div class="ideacard">
-<!--                     <div class="title"><a href="/b/{{card.ideaboardName}}">{{card.ideaboardName}}</a></div> -->
-<div class="title"><a class='button-success pure-button' ng-click="test()">{{card.ideaboardName}}</a></div>
+                    <div class="title"><a href="/b/{{card.ideaboardName}}">{{card.ideaboardName}}</a></div>
+<!-- <div class="title"><a class='button-success pure-button' ng-click="test()">{{card.ideaboardName}}</a></div> -->
                     <!--div class="desc" ng-bind-html='card.title | linky : "_blank" '></div-->
                     <div class="desc" ng-bind-html='card.description | linky : "_blank" '></div>
                     <!-- div class="author">{{card.user_id}}</div> -->
                     <div class="desc" ng-bind-html='card.website | linky : "_blank" '></div>
 
                 </div>
-							</div>
+							</div></div>
             </div>
         </div>
 
