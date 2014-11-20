@@ -1,4 +1,4 @@
-#Thacks Idea Board
+#IdeaHub
 
 ##Tech used by now
  - coffee
