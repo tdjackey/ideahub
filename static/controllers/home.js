@@ -102,6 +102,7 @@ app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal,$location) {
     }).success(function(d){
       IdeasFactory.getScope().FetchAllIdeas($location.url().split('\/')[1]);
       $scope.closeMe();
+      // $scope.toggle();
     }).error(function(d){
       $scope.error = d.fail;
     });
@@ -123,6 +124,7 @@ app.controller('MyModalBoardCtrl', function ($scope,IdeaBoardFactory,myModalBoar
     }).success(function(d){
       IdeaBoardFactory.getScope().FetchAllIdeaBoards();
       $scope.closeMe();
+      // $scope.toggle();
     }).error(function(d){
       $scope.error = d.fail;
     });
