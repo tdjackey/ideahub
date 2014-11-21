@@ -98,7 +98,7 @@ app.controller('MyModalCtrl', function ($scope,IdeasFactory,myModal,$location) {
         description: $scope.description,
         user_id: $scope.user_id,
         email: $scope.email,
-        ideaboardName: $location.url().split('\/')[1]
+        ideaboardName: decodeURI($location.url().split('\/')[1])
     }).success(function(d){
       IdeasFactory.getScope().FetchAllIdeas($location.url().split('\/')[1]);
       $scope.closeMe();
