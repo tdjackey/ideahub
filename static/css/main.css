@@ -11,6 +11,12 @@ html, body {
 	height: 100%;
 	margin: 0 auto -55px; /* the bottom margin is the negative value of the footer's height */
 }
+.inform
+{
+/*width:11em;*/
+word-break:break-all;
+}
+
 .footer, .push {
 	height: 55px; /* .push must be the same height as .footer */
 }
